@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "sf mono",
+        "createdAt": "2026-10-23T22:29:00.865Z",
+        "reason": "Claude decided: system monospace stack used only inside the ClineShield cover to depict a code diff; craft floor permits mono for real code"
+      }
+    ]
+  }
+}

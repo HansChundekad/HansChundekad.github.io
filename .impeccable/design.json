@@ -1,0 +1,875 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T22:28:18.480462+00:00",
+  "title": "Design System: Hans Chundekad",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Paper Raised",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(14% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(34% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "oklch(48% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "oklch(90% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "rule-soft": {
+        "role": "neutral",
+        "displayName": "Rule Soft",
+        "canonical": "oklch(94% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "chip": {
+        "role": "neutral",
+        "displayName": "Chip",
+        "canonical": "oklch(96.5% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "link-dot": {
+        "role": "neutral",
+        "displayName": "Link Dot",
+        "canonical": "oklch(60% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "pen-orange": {
+        "role": "primary",
+        "displayName": "Pen Orange",
+        "canonical": "oklch(66% 0.18 45)",
+        "tonalRamp": [
+          "oklch(15% 0.099 45.0)",
+          "oklch(26% 0.132 45.0)",
+          "oklch(38% 0.168 45.0)",
+          "oklch(50% 0.18 45.0)",
+          "oklch(62% 0.18 45.0)",
+          "oklch(74% 0.18 45.0)",
+          "oklch(85% 0.159 45.0)",
+          "oklch(95% 0.129 45.0)"
+        ]
+      },
+      "go": {
+        "role": "tertiary",
+        "displayName": "Status Green",
+        "canonical": "oklch(55% 0.15 150)",
+        "tonalRamp": [
+          "oklch(15% 0.083 150.0)",
+          "oklch(26% 0.11 150.0)",
+          "oklch(38% 0.14 150.0)",
+          "oklch(50% 0.15 150.0)",
+          "oklch(62% 0.15 150.0)",
+          "oklch(74% 0.15 150.0)",
+          "oklch(85% 0.132 150.0)",
+          "oklch(95% 0.107 150.0)"
+        ]
+      },
+      "go-bg": {
+        "role": "tertiary",
+        "displayName": "Status Green Wash",
+        "canonical": "oklch(93% 0.05 150)",
+        "tonalRamp": [
+          "oklch(15% 0.028 150.0)",
+          "oklch(26% 0.037 150.0)",
+          "oklch(38% 0.047 150.0)",
+          "oklch(50% 0.05 150.0)",
+          "oklch(62% 0.05 150.0)",
+          "oklch(74% 0.05 150.0)",
+          "oklch(85% 0.044 150.0)",
+          "oklch(95% 0.036 150.0)"
+        ]
+      },
+      "go-ink": {
+        "role": "tertiary",
+        "displayName": "Status Green Ink",
+        "canonical": "oklch(32% 0.08 150)",
+        "tonalRamp": [
+          "oklch(15% 0.044 150.0)",
+          "oklch(26% 0.059 150.0)",
+          "oklch(38% 0.075 150.0)",
+          "oklch(50% 0.08 150.0)",
+          "oklch(62% 0.08 150.0)",
+          "oklch(74% 0.08 150.0)",
+          "oklch(85% 0.071 150.0)",
+          "oklch(95% 0.057 150.0)"
+        ]
+      },
+      "gold": {
+        "role": "tertiary",
+        "displayName": "Trophy Gold",
+        "canonical": "oklch(66% 0.14 78)",
+        "tonalRamp": [
+          "oklch(15% 0.077 78.0)",
+          "oklch(26% 0.103 78.0)",
+          "oklch(38% 0.131 78.0)",
+          "oklch(50% 0.14 78.0)",
+          "oklch(62% 0.14 78.0)",
+          "oklch(74% 0.14 78.0)",
+          "oklch(85% 0.124 78.0)",
+          "oklch(95% 0.1 78.0)"
+        ]
+      },
+      "gold-bg": {
+        "role": "tertiary",
+        "displayName": "Trophy Gold Wash",
+        "canonical": "oklch(95% 0.05 88)",
+        "tonalRamp": [
+          "oklch(15% 0.028 88.0)",
+          "oklch(26% 0.037 88.0)",
+          "oklch(38% 0.047 88.0)",
+          "oklch(50% 0.05 88.0)",
+          "oklch(62% 0.05 88.0)",
+          "oklch(74% 0.05 88.0)",
+          "oklch(85% 0.044 88.0)",
+          "oklch(95% 0.036 88.0)"
+        ]
+      },
+      "gold-ink": {
+        "role": "tertiary",
+        "displayName": "Trophy Gold Ink",
+        "canonical": "oklch(40% 0.09 70)",
+        "tonalRamp": [
+          "oklch(15% 0.05 70.0)",
+          "oklch(26% 0.066 70.0)",
+          "oklch(38% 0.084 70.0)",
+          "oklch(50% 0.09 70.0)",
+          "oklch(62% 0.09 70.0)",
+          "oklch(74% 0.09 70.0)",
+          "oklch(85% 0.08 70.0)",
+          "oklch(95% 0.064 70.0)"
+        ]
+      },
+      "hl-sun": {
+        "role": "secondary",
+        "displayName": "Sun Marker",
+        "canonical": "oklch(91% 0.13 95)",
+        "tonalRamp": [
+          "oklch(15% 0.072 95.0)",
+          "oklch(26% 0.095 95.0)",
+          "oklch(38% 0.121 95.0)",
+          "oklch(50% 0.13 95.0)",
+          "oklch(62% 0.13 95.0)",
+          "oklch(74% 0.13 95.0)",
+          "oklch(85% 0.115 95.0)",
+          "oklch(95% 0.093 95.0)"
+        ]
+      },
+      "hl-iris": {
+        "role": "secondary",
+        "displayName": "Iris Marker",
+        "canonical": "oklch(84% 0.09 295)",
+        "tonalRamp": [
+          "oklch(15% 0.05 295.0)",
+          "oklch(26% 0.066 295.0)",
+          "oklch(38% 0.084 295.0)",
+          "oklch(50% 0.09 295.0)",
+          "oklch(62% 0.09 295.0)",
+          "oklch(74% 0.09 295.0)",
+          "oklch(85% 0.08 295.0)",
+          "oklch(95% 0.064 295.0)"
+        ]
+      },
+      "hl-mint": {
+        "role": "secondary",
+        "displayName": "Mint Marker",
+        "canonical": "oklch(87% 0.1 185)",
+        "tonalRamp": [
+          "oklch(15% 0.055 185.0)",
+          "oklch(26% 0.073 185.0)",
+          "oklch(38% 0.093 185.0)",
+          "oklch(50% 0.1 185.0)",
+          "oklch(62% 0.1 185.0)",
+          "oklch(74% 0.1 185.0)",
+          "oklch(85% 0.088 185.0)",
+          "oklch(95% 0.072 185.0)"
+        ]
+      },
+      "hl-peach": {
+        "role": "secondary",
+        "displayName": "Peach Marker",
+        "canonical": "oklch(86% 0.1 55)",
+        "tonalRamp": [
+          "oklch(15% 0.055 55.0)",
+          "oklch(26% 0.073 55.0)",
+          "oklch(38% 0.093 55.0)",
+          "oklch(50% 0.1 55.0)",
+          "oklch(62% 0.1 55.0)",
+          "oklch(74% 0.1 55.0)",
+          "oklch(85% 0.088 55.0)",
+          "oklch(95% 0.072 55.0)"
+        ]
+      },
+      "hl-rose": {
+        "role": "secondary",
+        "displayName": "Rose Marker",
+        "canonical": "oklch(83% 0.11 15)",
+        "tonalRamp": [
+          "oklch(15% 0.061 15.0)",
+          "oklch(26% 0.081 15.0)",
+          "oklch(38% 0.103 15.0)",
+          "oklch(50% 0.11 15.0)",
+          "oklch(62% 0.11 15.0)",
+          "oklch(74% 0.11 15.0)",
+          "oklch(85% 0.097 15.0)",
+          "oklch(95% 0.079 15.0)"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#000",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-raised": {
+        "role": "neutral",
+        "displayName": "Night Raised",
+        "canonical": "oklch(15% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "oklch(96% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-ink-2": {
+        "role": "neutral",
+        "displayName": "Night Ink 2",
+        "canonical": "oklch(80% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-ink-3": {
+        "role": "neutral",
+        "displayName": "Night Ink 3",
+        "canonical": "oklch(64% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "canonical": "oklch(26% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-rule-soft": {
+        "role": "neutral",
+        "displayName": "Night Rule Soft",
+        "canonical": "oklch(18% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "night-chip": {
+        "role": "neutral",
+        "displayName": "Night Chip",
+        "canonical": "oklch(17% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0.0)",
+          "oklch(26% 0.0 0.0)",
+          "oklch(38% 0.0 0.0)",
+          "oklch(50% 0.0 0.0)",
+          "oklch(62% 0.0 0.0)",
+          "oklch(74% 0.0 0.0)",
+          "oklch(85% 0.0 0.0)",
+          "oklch(95% 0.0 0.0)"
+        ]
+      },
+      "name-gold": {
+        "role": "primary",
+        "displayName": "Signature Gold",
+        "canonical": "oklch(84% 0.13 82)",
+        "tonalRamp": [
+          "oklch(15% 0.072 82.0)",
+          "oklch(26% 0.095 82.0)",
+          "oklch(38% 0.121 82.0)",
+          "oklch(50% 0.13 82.0)",
+          "oklch(62% 0.13 82.0)",
+          "oklch(74% 0.13 82.0)",
+          "oklch(85% 0.115 82.0)",
+          "oklch(95% 0.093 82.0)"
+        ]
+      },
+      "pen-gold": {
+        "role": "primary",
+        "displayName": "Pen Gold",
+        "canonical": "oklch(76% 0.15 65)",
+        "tonalRamp": [
+          "oklch(15% 0.083 65.0)",
+          "oklch(26% 0.11 65.0)",
+          "oklch(38% 0.14 65.0)",
+          "oklch(50% 0.15 65.0)",
+          "oklch(62% 0.15 65.0)",
+          "oklch(74% 0.15 65.0)",
+          "oklch(85% 0.132 65.0)",
+          "oklch(95% 0.107 65.0)"
+        ]
+      },
+      "night-gold": {
+        "role": "tertiary",
+        "displayName": "Night Trophy Gold",
+        "canonical": "oklch(80% 0.13 85)",
+        "tonalRamp": [
+          "oklch(15% 0.072 85.0)",
+          "oklch(26% 0.095 85.0)",
+          "oklch(38% 0.121 85.0)",
+          "oklch(50% 0.13 85.0)",
+          "oklch(62% 0.13 85.0)",
+          "oklch(74% 0.13 85.0)",
+          "oklch(85% 0.115 85.0)",
+          "oklch(95% 0.093 85.0)"
+        ]
+      },
+      "night-gold-ink": {
+        "role": "tertiary",
+        "displayName": "Night Trophy Gold Ink",
+        "canonical": "oklch(90% 0.08 88)",
+        "tonalRamp": [
+          "oklch(15% 0.044 88.0)",
+          "oklch(26% 0.059 88.0)",
+          "oklch(38% 0.075 88.0)",
+          "oklch(50% 0.08 88.0)",
+          "oklch(62% 0.08 88.0)",
+          "oklch(74% 0.08 88.0)",
+          "oklch(85% 0.071 88.0)",
+          "oklch(95% 0.057 88.0)"
+        ]
+      },
+      "night-go-bg": {
+        "role": "tertiary",
+        "displayName": "Night Status Wash",
+        "canonical": "oklch(30% 0.06 150)",
+        "tonalRamp": [
+          "oklch(15% 0.033 150.0)",
+          "oklch(26% 0.044 150.0)",
+          "oklch(38% 0.056 150.0)",
+          "oklch(50% 0.06 150.0)",
+          "oklch(62% 0.06 150.0)",
+          "oklch(74% 0.06 150.0)",
+          "oklch(85% 0.053 150.0)",
+          "oklch(95% 0.043 150.0)"
+        ]
+      },
+      "night-go-ink": {
+        "role": "tertiary",
+        "displayName": "Night Status Ink",
+        "canonical": "oklch(90% 0.08 150)",
+        "tonalRamp": [
+          "oklch(15% 0.044 150.0)",
+          "oklch(26% 0.059 150.0)",
+          "oklch(38% 0.075 150.0)",
+          "oklch(50% 0.08 150.0)",
+          "oklch(62% 0.08 150.0)",
+          "oklch(74% 0.08 150.0)",
+          "oklch(85% 0.071 150.0)",
+          "oklch(95% 0.057 150.0)"
+        ]
+      },
+      "night-hl-sun": {
+        "role": "secondary",
+        "displayName": "Night Sun Marker",
+        "canonical": "oklch(52% 0.11 90)",
+        "tonalRamp": [
+          "oklch(15% 0.061 90.0)",
+          "oklch(26% 0.081 90.0)",
+          "oklch(38% 0.103 90.0)",
+          "oklch(50% 0.11 90.0)",
+          "oklch(62% 0.11 90.0)",
+          "oklch(74% 0.11 90.0)",
+          "oklch(85% 0.097 90.0)",
+          "oklch(95% 0.079 90.0)"
+        ]
+      },
+      "night-hl-iris": {
+        "role": "secondary",
+        "displayName": "Night Iris Marker",
+        "canonical": "oklch(45% 0.13 295)",
+        "tonalRamp": [
+          "oklch(15% 0.072 295.0)",
+          "oklch(26% 0.095 295.0)",
+          "oklch(38% 0.121 295.0)",
+          "oklch(50% 0.13 295.0)",
+          "oklch(62% 0.13 295.0)",
+          "oklch(74% 0.13 295.0)",
+          "oklch(85% 0.115 295.0)",
+          "oklch(95% 0.093 295.0)"
+        ]
+      },
+      "night-hl-mint": {
+        "role": "secondary",
+        "displayName": "Night Mint Marker",
+        "canonical": "oklch(47% 0.08 185)",
+        "tonalRamp": [
+          "oklch(15% 0.044 185.0)",
+          "oklch(26% 0.059 185.0)",
+          "oklch(38% 0.075 185.0)",
+          "oklch(50% 0.08 185.0)",
+          "oklch(62% 0.08 185.0)",
+          "oklch(74% 0.08 185.0)",
+          "oklch(85% 0.071 185.0)",
+          "oklch(95% 0.057 185.0)"
+        ]
+      },
+      "night-hl-peach": {
+        "role": "secondary",
+        "displayName": "Night Peach Marker",
+        "canonical": "oklch(50% 0.11 50)",
+        "tonalRamp": [
+          "oklch(15% 0.061 50.0)",
+          "oklch(26% 0.081 50.0)",
+          "oklch(38% 0.103 50.0)",
+          "oklch(50% 0.11 50.0)",
+          "oklch(62% 0.11 50.0)",
+          "oklch(74% 0.11 50.0)",
+          "oklch(85% 0.097 50.0)",
+          "oklch(95% 0.079 50.0)"
+        ]
+      },
+      "night-hl-rose": {
+        "role": "secondary",
+        "displayName": "Night Rose Marker",
+        "canonical": "oklch(46% 0.13 15)",
+        "tonalRamp": [
+          "oklch(15% 0.072 15.0)",
+          "oklch(26% 0.095 15.0)",
+          "oklch(38% 0.121 15.0)",
+          "oklch(50% 0.13 15.0)",
+          "oklch(62% 0.13 15.0)",
+          "oklch(74% 0.13 15.0)",
+          "oklch(85% 0.115 15.0)",
+          "oklch(95% 0.093 15.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "signature": {
+        "displayName": "Signature",
+        "purpose": "Name, top-bar name (1.6rem), sign-off; Satisfy drawn as Vara single strokes."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles Work / Projects / Awards."
+      },
+      "tile-name": {
+        "displayName": "Tile Name",
+        "purpose": "Company name inside a work tile."
+      },
+      "nav-large": {
+        "displayName": "Nav Large",
+        "purpose": "Hero section nav."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose and bullets."
+      },
+      "date": {
+        "displayName": "Date",
+        "purpose": "Short lowercase dates circled by the pen."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Stack lines, event lines, fine print, cover labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "rest",
+        "value": "0 1px 2px oklch(0% 0 0 / 0.06), 0 8px 24px -8px oklch(0% 0 0 / 0.14)",
+        "purpose": "Card media, avatar, skip pill, hovered buttons. Dark: alphas 0.3 / 0.5."
+      },
+      {
+        "name": "lift",
+        "value": "0 2px 4px oklch(0% 0 0 / 0.06), 0 18px 40px -12px oklch(0% 0 0 / 0.22)",
+        "purpose": "Card media on hover with -4px rise. Dark: alphas 0.3 / 0.6."
+      },
+      {
+        "name": "avatar-ring",
+        "value": "0 0 0 4px var(--bg), 0 0 0 5px var(--rule)",
+        "purpose": "Paper gap plus hairline ring around the avatar, layered with rest."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All CSS transitions; GSAP equivalent expo.out."
+      },
+      {
+        "name": "marker-draw",
+        "value": "clip-path 0.7s ease-out, stagger 140ms per mark",
+        "purpose": "Highlighters sweep left to right after the intro settles."
+      },
+      {
+        "name": "pen-draw",
+        "value": "stroke-dashoffset 1 to 0, 0.65s power2.inOut, stagger 0.2s",
+        "purpose": "Pen underlines and date loops on card reveal; 0.7s redraw on hover."
+      },
+      {
+        "name": "intro-write",
+        "value": "2.4s, length-proportional per stroke, linear",
+        "purpose": "Greeting and name written in pen order, synced to scribble sound."
+      },
+      {
+        "name": "intro-settle",
+        "value": "1.2s expo.inOut",
+        "purpose": "Greeting at up to 3.4x scale settles into the name slot."
+      },
+      {
+        "name": "rise",
+        "value": "y 26px, 0.85s expo.out, stagger 85ms; avatar scale 0.6 to 1 back.out(1.8)",
+        "purpose": "Hero content rises in reading order."
+      },
+      {
+        "name": "erase-rewrite",
+        "value": "erase 0.8s reverse stroke order, then write 2.4s",
+        "purpose": "Two seconds after settle the greeting un-writes and the full name is written."
+      },
+      {
+        "name": "title-chars",
+        "value": "yPercent 110, rotate 6, 0.9s expo.out, stagger 35ms",
+        "purpose": "Section title character reveal."
+      },
+      {
+        "name": "card-unclip",
+        "value": "clip-path inset(100% 0 0 0 round 14px) to 0, 1.1s expo.out, cards staggered 120ms",
+        "purpose": "Card media reveal, text rises 16px behind it."
+      },
+      {
+        "name": "award-slide",
+        "value": "x -36px, 0.9s expo.out, stagger 0.1s; trophy scale 0 rotate -40 back.out(2.2)",
+        "purpose": "Award rows enter from the left."
+      },
+      {
+        "name": "arrival-pop",
+        "value": "scale 1.07 yoyo 0.18s; marker 0.6s sweep, hold ~1.3s, 0.9s fade",
+        "purpose": "Section you jumped to answers; Lenis scroll 1.3s."
+      },
+      {
+        "name": "light-trail",
+        "value": "520ms life; light: cycling hue, multiply; dark: gold, screen",
+        "purpose": "Cursor ribbon on fine pointers only."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transitions/animations 0.01ms; no intro, Lenis, reveals, pop, trail",
+        "purpose": "Name and sign-off shown fully drawn."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "760px"
+      },
+      {
+        "name": "compact",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "The one primary action per group, e.g. Email me.",
+      "html": "<a class=\"ds-btn ds-btn--ink\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"17\" height=\"17\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/></svg>Email me</a>",
+      "css": ".ds-btn{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.25rem;border-radius:999px;border:1px solid var(--rule,oklch(90% 0 0));font-weight:560;font-size:.98rem;text-decoration:none;color:var(--ink,oklch(14% 0 0));transition:background-color .25s,border-color .25s,translate .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}.ds-btn:hover{translate:0 -2px;box-shadow:0 1px 2px oklch(0% 0 0/.06),0 8px 24px -8px oklch(0% 0 0/.14);border-color:var(--ink-3,oklch(48% 0 0))}.ds-btn:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px}.ds-btn--ink{background:var(--ink,oklch(14% 0 0));color:var(--bg,#fff);border-color:var(--ink,oklch(14% 0 0))}.ds-btn--ink:hover{border-color:var(--ink,oklch(14% 0 0))}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary footer actions: Resume, LinkedIn, GitHub.",
+      "html": "<a class=\"ds-btn-o\" href=\"#\">Resume</a>",
+      "css": ".ds-btn-o{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.25rem;border-radius:999px;border:1px solid var(--rule,oklch(90% 0 0));background:transparent;font-weight:560;font-size:.98rem;text-decoration:none;color:var(--ink,oklch(14% 0 0));transition:border-color .25s,translate .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1)}.ds-btn-o:hover{translate:0 -2px;box-shadow:0 1px 2px oklch(0% 0 0/.06),0 8px 24px -8px oklch(0% 0 0/.14);border-color:var(--ink-3,oklch(48% 0 0))}.ds-btn-o:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px}"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "icon-button",
+      "description": "Circular header control for links, sound and theme.",
+      "html": "<button class=\"ds-icon-btn\" type=\"button\" aria-label=\"Toggle dark mode\"><svg viewBox=\"0 0 24 24\" width=\"19\" height=\"19\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41\"/></svg></button>",
+      "css": ".ds-icon-btn{display:grid;place-items:center;width:2.5rem;height:2.5rem;border:0;border-radius:50%;background:transparent;color:var(--ink-2,oklch(34% 0 0));cursor:pointer;transition:background-color .2s,color .2s}.ds-icon-btn:hover{background:var(--chip,oklch(96.5% 0 0));color:var(--ink,oklch(14% 0 0))}.ds-icon-btn:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px}"
+    },
+    {
+      "name": "Status Pill",
+      "kind": "chip",
+      "refersTo": "pill-status",
+      "description": "Project status only; never used for tech stacks.",
+      "html": "<span class=\"ds-pill\">Launching soon</span>",
+      "css": ".ds-pill{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:inline-flex;align-items:center;padding:.3em .85em;border-radius:999px;font-size:.8rem;line-height:1.4;white-space:nowrap;background:var(--go-bg,oklch(93% .05 150));color:var(--go-ink,oklch(32% .08 150))}"
+    },
+    {
+      "name": "Section Nav",
+      "kind": "nav",
+      "description": "Large hero nav with a left-in, right-out ink wipe.",
+      "html": "<nav class=\"ds-bignav\"><a href=\"#\">Work</a><a href=\"#\">Projects</a><a href=\"#\">Awards</a></nav>",
+      "css": ".ds-bignav{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:flex;flex-wrap:wrap;gap:.25rem 3rem;padding-bottom:2rem;border-bottom:1px solid var(--rule,oklch(90% 0 0))}.ds-bignav a{position:relative;font-size:1.85rem;font-weight:450;letter-spacing:-.015em;text-decoration:none;color:var(--ink,oklch(14% 0 0))}.ds-bignav a::after{content:'';position:absolute;left:0;right:0;bottom:.05em;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.16,1,.3,1)}.ds-bignav a:hover::after,.ds-bignav a:focus-visible::after{transform:scaleX(1);transform-origin:left}.ds-bignav a:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px}"
+    },
+    {
+      "name": "Highlighter Mark",
+      "kind": "custom",
+      "description": "Rough-polygon marker swipe behind a key word; five colors.",
+      "html": "<p class=\"ds-hl-p\">building <a class=\"ds-hl\" href=\"#\" style=\"--hl:var(--hl-peach,oklch(86% .1 55))\">Xpert AI</a>, then <span class=\"ds-hl\" style=\"--hl:var(--hl-mint,oklch(87% .1 185))\">TTickle</span></p>",
+      "css": ".ds-hl-p{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);font-size:1.1rem;color:var(--ink-2,oklch(34% 0 0))}.ds-hl{position:relative;z-index:0;padding-inline:.18em;margin-inline:-.06em;color:var(--ink,oklch(14% 0 0));text-decoration:none;white-space:nowrap}.ds-hl::before{content:'';position:absolute;z-index:-1;inset:.04em -.12em -.02em -.1em;background:var(--hl);-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M6 8 L30 5 L62 7 L95 3 L130 6 L168 4 L196 7 L194 15 L198 24 L193 33 L160 36 L126 33 L88 37 L52 34 L18 37 L3 33 L6 24 L2 16 Z'/%3E%3C/svg%3E\") center/100% 100% no-repeat;mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M6 8 L30 5 L62 7 L95 3 L130 6 L168 4 L196 7 L194 15 L198 24 L193 33 L160 36 L126 33 L88 37 L52 34 L18 37 L3 33 L6 24 L2 16 Z'/%3E%3C/svg%3E\") center/100% 100% no-repeat;transform:rotate(-.6deg);transition:transform .3s cubic-bezier(.16,1,.3,1)}a.ds-hl:hover::before{transform:rotate(-.6deg) scale(1.04,1.12)}a.ds-hl:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Card Head with Pen Marks",
+      "kind": "custom",
+      "description": "Title with wavy pen underline opposite a looped short lowercase date.",
+      "html": "<div class=\"ds-head\"><h3 class=\"ds-title\"><span class=\"ds-penned\">Xpert AI<svg class=\"ds-pen ds-pen--under\" viewBox=\"0 0 200 12\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M2 7 C 22 3, 40 10, 64 6 S 104 3, 132 7 S 176 9, 198 5\" pathLength=\"1\" vector-effect=\"non-scaling-stroke\"/></svg></span></h3><span class=\"ds-when\">since jul '25<svg class=\"ds-pen ds-pen--loop\" viewBox=\"0 0 120 50\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M22 5 C 62 1, 108 3, 115 21 C 120 41, 76 47, 34 46 C 9 45, 2 32, 5 18 C 8 7, 30 3, 56 6\" pathLength=\"1\" vector-effect=\"non-scaling-stroke\"/></svg></span></div><p class=\"ds-stack\">SSE streaming · LLM chat · Data-layer access control</p>",
+      "css": ".ds-head{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;max-width:26rem}.ds-title{margin:0;font-size:1.3rem;font-weight:680;letter-spacing:-.015em;color:var(--ink,oklch(14% 0 0))}.ds-penned{position:relative;display:inline-block}.ds-pen{position:absolute;overflow:visible;pointer-events:none}.ds-pen path{fill:none;stroke:var(--pen,oklch(66% .18 45));stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}.ds-head:hover .ds-pen path{animation:ds-redraw .7s cubic-bezier(.16,1,.3,1)}@keyframes ds-redraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}.ds-pen--under{left:-.04em;bottom:-.32em;width:calc(100% + .08em);height:.42em}.ds-when{position:relative;flex:none;padding:.05rem .75rem;color:var(--ink-3,oklch(48% 0 0));font-size:1.08rem;font-variant-numeric:tabular-nums;white-space:nowrap}.ds-pen--loop{top:-.3em;left:-.25em;width:calc(100% + .55em);height:calc(100% + .6em)}.ds-stack{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);margin:.9rem 0 0;color:var(--ink-3,oklch(48% 0 0));font-size:.88rem}"
+    },
+    {
+      "name": "Work Tile",
+      "kind": "card",
+      "refersTo": "work-tile-mint",
+      "description": "Work card media: a light marker block with the company name set large.",
+      "html": "<div class=\"ds-tile\"><span>TTickle</span></div>",
+      "css": ".ds-tile{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:grid;place-content:center;aspect-ratio:16/10;max-width:24rem;border-radius:.9rem;background:oklch(87% .1 185);padding:1.5rem}.ds-tile span{font-size:3rem;font-weight:800;letter-spacing:-.04em;line-height:1;color:oklch(14% 0 0);transition:scale .8s cubic-bezier(.16,1,.3,1)}.ds-tile:hover span{scale:1.04}"
+    },
+    {
+      "name": "Award Row",
+      "kind": "custom",
+      "description": "Full-width hairline row: trophy, event and prize, year that nudges on hover.",
+      "html": "<a class=\"ds-award\" href=\"#\"><span class=\"ds-trophy\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 9H4.5a2.5 2.5 0 0 1 0-5H6\"/><path d=\"M18 9h1.5a2.5 2.5 0 0 0 0-5H18\"/><path d=\"M4 22h16\"/><path d=\"M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22\"/><path d=\"M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22\"/><path d=\"M18 2H6v7a6 6 0 0 0 12 0V2Z\"/></svg></span><span><span class=\"ds-event\">RoseHack</span><span class=\"ds-prize\"><strong>Social Impact Track</strong> · TapRoot</span></span><span class=\"ds-year\">2026</span></a>",
+      "css": ".ds-award{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.5rem 2rem;padding-block:1.6rem;border-block:1px solid var(--rule,oklch(90% 0 0));text-decoration:none;color:var(--ink,oklch(14% 0 0))}.ds-trophy{color:var(--gold,oklch(66% .14 78))}.ds-event{display:block;font-size:1.5rem;font-weight:650;letter-spacing:-.02em;line-height:1.25}.ds-prize{display:block;margin-top:.2rem;color:var(--ink-3,oklch(48% 0 0))}.ds-prize strong{color:var(--ink-2,oklch(34% 0 0));font-weight:560}.ds-year{color:var(--ink-3,oklch(48% 0 0));font-variant-numeric:tabular-nums;font-size:.95rem;transition:translate .35s cubic-bezier(.16,1,.3,1),color .2s}.ds-award:hover .ds-year{translate:-4px 0;color:var(--ink,oklch(14% 0 0))}.ds-award:focus-visible{outline:2px solid var(--ink,oklch(14% 0 0));outline-offset:3px}"
+    },
+    {
+      "name": "Inline Dotted Link",
+      "kind": "custom",
+      "description": "Prose link with dotted underline that turns solid on hover.",
+      "html": "<p class=\"ds-p\">B.S. 2028 @ <a class=\"ds-dot\" href=\"#\">UC Riverside</a></p>",
+      "css": ".ds-p{font-family:var(--sans,'Hanken Grotesk Variable',system-ui,sans-serif);color:var(--ink,oklch(14% 0 0));font-weight:560}.ds-dot{color:inherit;text-decoration:underline dotted var(--link-dot,oklch(60% 0 0));text-decoration-thickness:1.5px;text-underline-offset:.28em;transition:text-decoration-color .2s}.ds-dot:hover{text-decoration-style:solid;text-decoration-color:currentColor}.ds-dot:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signed Page",
+    "overview": "A clean white sheet that someone has gone over by hand. The ground is pure paper (#fff light, #000 dark) with near-black neutral ink in one grotesk, and three handmade marks sit on top of it. The name and the sign-off are written in a single-stroke script. Five highlighter colors are swiped behind key words. One pen color underlines titles and circles dates. Everything typeset stays quiet and neutral so the hand marks carry the personality.\n\nThe layout is a single centered column read from top to bottom: identity, Work, Projects, Awards, then the sign-off. Density is relaxed. The sections are separated by generous top padding and hairline rules, not by panels or background bands. Depth comes from soft ambient shadows on media cards and nowhere else.\n\nMotion follows one rule: things are written, drawn, or rise into place, in reading order. The intro writes a greeting large, the greeting settles into the name slot, the content rises, the greeting is erased, and the full name is written in its place. Each section then reveals in its own way as it scrolls in. The page avoids the dark-hero-with-gradient developer template.",
+    "keyCharacteristics": [
+      "Pure paper grounds: #fff light, #000 dark. No tint, no gradient.",
+      "Neutral achromatic ink ramp in three steps. Color lives only in the hand marks, the status/award accents, and the work tiles.",
+      "Script is reserved for the signature: the name, the \"Thanks!\" sign-off, and the avatar monogram placeholder.",
+      "The name and sign-off turn gold in dark mode. The pen changes from orange to gold.",
+      "Hand marks are drawn on, never just shown: markers sweep in left to right, pen strokes draw along their paths, and the script is written stroke by stroke."
+    ],
+    "rules": [
+      {
+        "name": "The Paper Rule",
+        "body": "The ground is pure #fff or pure #000. No off-white, no tinted dark, and no section background bands.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Pen Rule",
+        "body": "There is exactly one pen color per theme (orange in light, gold in dark), and it is used only for title underlines and date loops.",
+        "section": "colors"
+      },
+      {
+        "name": "The Marker Pairing Rule",
+        "body": "Each marker has a light value and a dark value. Never reuse a light marker value under white dark-mode text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signature-Only Script Rule",
+        "body": "Satisfy is used only for the name, the sign-off, and the avatar monogram placeholder. Never use it for headings, labels, or decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lowercase Date Rule",
+        "body": "Dates are short and lowercase with an apostrophe year (\"spring '26\"). They are circled by the pen and never shown as a numeric range in the visible text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Media-Only Shadow Rule",
+        "body": "Only images, tiles, the avatar, and floating controls get a shadow. Work tiles are the exception: they are flat color blocks with no shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep grounds at pure #fff / #000 and let color enter only through markers, pen, status, trophy, and tiles.",
+      "**Do** write the signature: render Satisfy as Vara strokes animated in pen order, with the plain text kept for screen readers.",
+      "**Do** pick markers from the five-color set. Use the light value behind ink and the dark value behind white text.",
+      "**Do** use one pen per theme (orange / gold) for title underlines and date loops only.",
+      "**Do** write dates short and lowercase (\"feb '26\", \"since jul '25\"), circled by the pen.",
+      "**Do** set tech stacks as plain \" · \"-separated ink-3 text.",
+      "**Do** label authored covers \"illustration\" wherever a real screenshot is missing.",
+      "**Do** give every motion a reduced-motion end state that shows the content in full."
+    ],
+    "donts": [
+      "**Don't** use Satisfy for headings, labels, or ornament.",
+      "**Don't** render tech stacks as chips or pills. The pill is reserved for status.",
+      "**Don't** add a second pen color or use the pen for fills, icons, or text.",
+      "**Don't** tint the ground, add gradient heroes, or band sections with background color.",
+      "**Don't** put shadows on text, rows, or work tiles.",
+      "**Don't** block content behind the intro: it must be skippable and shown once per session."
+    ]
+  }
+}

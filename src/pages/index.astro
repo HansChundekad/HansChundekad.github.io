@@ -1,0 +1,301 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Pen from '../components/Pen.astro';
+import { profile, bullets, work, projects, awards } from '../data/content';
+
+const nav = [
+  { id: 'work', label: 'Work' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'awards', label: 'Awards' },
+];
+const initials = profile.name
+  .split(' ')
+  .map((w) => w[0])
+  .join('');
+let hlIndex = 0;
+---
+
+<Base
+  title="Hans Chundekad · Software Engineer"
+  description="Hans Chundekad: Computer Science with Business Applications at UC Riverside. 3x hackathon winner building AI agents, full-stack apps, and embedded systems."
+>
+  <header class="topbar" id="topbar">
+    <div class="topbar__inner col">
+      <a class="topbar__name" href="#top" aria-label="Back to top">{profile.name}</a>
+      <nav class="topbar__nav" aria-label="Sections">
+        {nav.map((n) => <a href={`#${n.id}`} data-jump>{n.label}</a>)}
+      </nav>
+      <div class="topbar__tools">
+        <div class="topbar__links">
+          <a class="icon-btn" href={`mailto:${profile.email}`} aria-label="Email"><Icon name="mail" /></a>
+          <a class="icon-btn" href={profile.linkedin} aria-label="LinkedIn"><Icon name="linkedin" /></a>
+          <a class="icon-btn" href={profile.github} aria-label="GitHub"><Icon name="github" /></a>
+        </div>
+        <button class="icon-btn theme-toggle topbar__theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+          <Icon name="sun" class="i-sun" /><Icon name="moon" class="i-moon" />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero col" aria-label="Introduction">
+      <div class="hero__head">
+        <div class="avatar" data-rise>
+          {profile.photo ? <img src={profile.photo} alt={`Portrait of ${profile.name}`} width="272" height="272" /> : <span aria-hidden="true">{initials}</span>}
+        </div>
+        <div>
+          <div class="name-slot" id="name-slot">
+            <h1><span class="name-text">{profile.name}</span></h1>
+            <div class="vara-layer" id="vara-greet" aria-hidden="true"></div>
+            <div class="vara-layer" id="vara-name" aria-hidden="true"></div>
+          </div>
+          <p class="hero__degree" data-rise>
+            {profile.degree} @ <a class="dot-link" href={profile.schoolUrl}>{profile.school}</a>
+            <span class="muted"> · {profile.gradYear}</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="bullets">
+        {
+          bullets.map((line) => (
+            <li data-rise>
+              <span>
+                {line.map((seg) => {
+                  if (typeof seg === 'string') return seg;
+                  const i = hlIndex++;
+                  return seg.href ? (
+                    <a class="hl" data-hl={seg.hl} href={seg.href} data-jump style={`--i:${i}`}>
+                      {seg.text}
+                    </a>
+                  ) : (
+                    <span class="hl" data-hl={seg.hl} style={`--i:${i}`}>
+                      {seg.text}
+                    </span>
+                  );
+                })}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="hero__seeking" data-rise>{profile.seeking}</p>
+
+      <p class="contact-row" data-rise>
+        <a href={`mailto:${profile.email}`}><Icon name="mail" />{profile.email}</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href={profile.linkedin}><Icon name="linkedin" />LinkedIn</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href={profile.github}><Icon name="github" />GitHub</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href={profile.resume}><Icon name="file" />Resume</a>
+      </p>
+
+      <nav class="bignav" id="bignav" aria-label="Sections" data-rise>
+        {nav.map((n) => <a href={`#${n.id}`} data-jump>{n.label}</a>)}
+        <button class="icon-btn theme-toggle bignav__theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+          <Icon name="sun" class="i-sun" /><Icon name="moon" class="i-moon" />
+        </button>
+      </nav>
+    </section>
+
+    <section class="section col" id="work" aria-labelledby="work-title">
+      <h2 class="section__title" id="work-title">Work</h2>
+      <div class="section__body grid">
+        {
+          work.map((job, i) => (
+            <article class="card job" data-reveal="card">
+              <div class={`card__media${job.logo ? '' : ` tile tile--${job.tile}`}`}>
+                {job.logo ? (
+                  <img src={job.logo} alt={`${job.company} logo`} loading="lazy" width="1600" height="1000" />
+                ) : (
+                  <span class="tile__name" aria-hidden="true">{job.company}</span>
+                )}
+              </div>
+              <div class="card__head">
+                <h3 class="card__name">
+                  <span class="penned">
+                    {job.role}
+                    <Pen kind="under" variant={i % 3 as 0 | 1 | 2} />
+                  </span>
+                </h3>
+                <span class="when" title={job.dates}>
+                  {job.when}
+                  <Pen kind="loop" variant={i % 3 as 0 | 1 | 2} />
+                </span>
+              </div>
+              <p class="card__event">
+                {job.company} · {job.program} · {job.place}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section col" id="projects" aria-labelledby="projects-title">
+      <h2 class="section__title" id="projects-title">Projects</h2>
+      <div class="section__body grid">
+        {
+          projects.map((p, i) => (
+            <article class="card" id={`project-${p.id}`} data-reveal="card">
+              <div class="card__media">
+                {p.image && <img src={p.image} alt={`Screenshot of ${p.name}`} loading="lazy" width="1600" height="1000" />}
+                {p.cover === 'xpert' && (
+                  <div class="cover cover--xpert" aria-hidden="true">
+                    <span class="cover__label">illustration</span>
+                    <div class="cv-window">
+                      <div class="cv-steps">
+                        <span class="on">1 Idea</span>
+                        <span class="on">2 Market</span>
+                        <span class="on">3 Plan</span>
+                        <span class="locked">4 Launch</span>
+                      </div>
+                      <div class="cv-msg cv-msg--ai">
+                        The assistant only sees the plan steps you have reached, enforced in the data layer, and streams its reply as it writes
+                        <span class="cv-caret" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {p.cover === 'clineshield' && (
+                  <div class="cover cover--clineshield" aria-hidden="true">
+                    <span class="cover__label">illustration</span>
+                    <div class="cv-diff">
+                      <div class="cv-diff__bar">
+                        <span>agent patch</span>
+                        <span>−4 functions</span>
+                      </div>
+                      <div class="cv-code">
+                        <span class="ctx"> export class Billing {"{"}</span>
+                        <span class="del">-  charge(user, amount) {"{"} … {"}"}</span>
+                        <span class="del">-  refund(id) {"{"} … {"}"}</span>
+                        <span class="del">-  invoice(month) {"{"} … {"}"}</span>
+                        <span class="del">-  retryFailed() {"{"} … {"}"}</span>
+                        <span class="ctx"> {"}"}</span>
+                      </div>
+                      <div class="cv-diff__verdict">
+                        <Icon name="shield-x" />
+                        Edit blocked: more than 3 functions deleted
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {p.cover === 'triage' && (
+                  <div class="cover cover--triage" aria-hidden="true">
+                    <span class="cover__label">illustration</span>
+                    <div class="tl" data-triage-log>
+                      <div class="tl__head">
+                        <span class="tl__title">App goes blank when deleting the last task</span>
+                        <span class="tl__status" data-status>running</span>
+                      </div>
+                      <ol class="tl__log">
+                        <li><b>ParserAgent</b> <i>@Repro</i> extracted 2 steps: Delete, confirm</li>
+                        <li class="tl__sub"><em>Repro</em> navigate → list is empty</li>
+                        <li><b>ReproAgent</b> <i>@Hypothesis</i> NOT REPRODUCED</li>
+                        <li><b>HypothesisAgent</b> <i>@Parser</i> create a task before deleting</li>
+                        <li><b>ParserAgent</b> <i>@Repro</i> type task → Add → Delete → confirm</li>
+                        <li class="tl__sub"><em>Repro</em> click Delete → confirm → page went blank</li>
+                        <li class="tl__sub tl__err"><em>Repro</em> TypeError: Cannot read properties of undefined (reading '0')</li>
+                        <li><b>ReproAgent</b> <i>@Hypothesis</i> BUG REPRODUCED · attempt 2</li>
+                        <li><b>HypothesisAgent</b> <i>@Repro</i> confirmed, matches the report</li>
+                      </ol>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div class="card__head">
+                <h3 class="card__name">
+                  <span class="penned">
+                    {p.name}
+                    <Pen kind="under" variant={(i + 1) % 3 as 0 | 1 | 2} />
+                  </span>
+                </h3>
+                <span class="when">
+                  {p.date}
+                  <Pen kind="loop" variant={(i + 2) % 3 as 0 | 1 | 2} />
+                </span>
+              </div>
+              {(p.event || p.status) && (
+                <p class="card__event">
+                  {p.event && <span>Built at {p.event}</span>}
+                  {p.status && <span class="pill pill--go">{p.status}</span>}
+                </p>
+              )}
+              <p class="card__tagline">{p.tagline}</p>
+              {p.award && (
+                <p class="card__award">
+                  <Icon name="trophy" />
+                  {p.award}
+                </p>
+              )}
+              <p class="stack">{p.stack.join(' · ')}</p>
+              {p.links.length > 0 && (
+                <div class="card__links">
+                  {p.links.map((l) => (
+                    <a href={l.href}>
+                      {l.label}
+                      <Icon name="arrow" />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section col" id="awards" aria-labelledby="awards-title">
+      <h2 class="section__title" id="awards-title">Awards</h2>
+      <div class="section__body awards">
+        {
+          awards.map((a) => (
+            <a class="award" href={a.href} data-reveal="award" data-jump>
+              <Icon name="trophy" class="award__trophy" />
+              <span>
+                <span class="award__event">{a.event}</span>
+                <span class="award__prize" style="display:block">
+                  <strong>{a.prize}</strong> · {a.project}
+                </span>
+              </span>
+              <span class="award__year">{a.year}</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="awards__more">
+        Every hackathon build, including LA Hacks and IrvineHacks, is on <a class="dot-link" href={profile.devpost}>Devpost</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer col">
+    <div class="footer__sign">
+      <div class="fallback" aria-hidden="true">Thanks!</div>
+      <div class="vara-layer" id="vara-sign" aria-hidden="true"></div>
+    </div>
+    <p class="footer__lead">If you're hiring software engineering interns for 2027, I'd like to hear from you.</p>
+    <div class="footer__cta">
+      <a class="btn btn--ink" href={`mailto:${profile.email}`}><Icon name="mail" />Email me</a>
+      <a class="btn" href={profile.resume}><Icon name="file" />Resume</a>
+      <a class="btn" href={profile.linkedin}><Icon name="linkedin" />LinkedIn</a>
+      <a class="btn" href={profile.github}><Icon name="github" />GitHub</a>
+    </div>
+    <div class="footer__fine">
+      <span>© 2026 {profile.name}</span>
+      <span>Built with Astro & GSAP · Riverside, CA</span>
+    </div>
+  </footer>
+
+  <p class="intro-hint" id="intro-hint" aria-hidden="true"><Icon name="volume-on" />Click anywhere for sound</p>
+  <canvas class="trail" id="trail" aria-hidden="true"></canvas>
+
+  <script>
+    import { boot } from '../scripts/main';
+    boot();
+  </script>
+</Base>
