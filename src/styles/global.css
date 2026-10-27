@@ -310,7 +310,6 @@ html.intro:not(.marks-on) .hl::before {
 .topbar__name,
 .topbar__nav,
 .topbar__links,
-.topbar__resume,
 .topbar__theme {
   opacity: 0;
   translate: 0 -0.5rem;
@@ -324,7 +323,6 @@ html.intro:not(.marks-on) .hl::before {
 .topbar.is-stuck .topbar__name,
 .topbar.is-stuck .topbar__nav,
 .topbar.is-stuck .topbar__links,
-.topbar.is-stuck .topbar__resume,
 .topbar.is-stuck .topbar__theme {
   opacity: 1;
   translate: 0 0;
@@ -335,7 +333,6 @@ html.intro:not(.marks-on) .hl::before {
 .topbar:not(.is-stuck) .topbar__name,
 .topbar:not(.is-stuck) .topbar__nav,
 .topbar:not(.is-stuck) .topbar__links,
-.topbar:not(.is-stuck) .topbar__resume,
 .topbar:not(.is-stuck) .topbar__theme {
   pointer-events: none;
   visibility: hidden;
@@ -1308,16 +1305,6 @@ html.js-name .footer__sign .fallback {
 .btn--sm svg {
   width: 0.95rem;
   height: 0.95rem;
-}
-.contact-row .contact-row__resume {
-  margin-right: 0.6rem;
-  color: var(--bg);
-}
-.contact-row .contact-row__resume:hover {
-  color: var(--bg);
-}
-.topbar__resume {
-  margin-inline: 0.35rem 0.15rem;
 }
 .footer__fine {
   margin-top: 5rem;

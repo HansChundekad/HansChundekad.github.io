@@ -31,8 +31,8 @@ let hlIndex = 0;
           <a class="icon-btn" href={`mailto:${profile.email}`} aria-label="Email" target="_blank" rel="noopener"><Icon name="mail" /></a>
           <a class="icon-btn" href={profile.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener"><Icon name="linkedin" /></a>
           <a class="icon-btn" href={profile.github} aria-label="GitHub" target="_blank" rel="noopener"><Icon name="github" /></a>
+          <a class="icon-btn" href={profile.resume} aria-label="Resume" target="_blank" rel="noopener"><Icon name="file" /></a>
         </div>
-        <a class="btn btn--ink btn--sm topbar__resume" href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
         <button class="icon-btn theme-toggle topbar__theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
           <Icon name="sun" class="i-sun" /><Icon name="moon" class="i-moon" />
         </button>
@@ -86,7 +86,8 @@ let hlIndex = 0;
       <p class="hero__seeking" data-rise>{profile.seeking}</p>
 
       <p class="contact-row" data-rise>
-        <a class="btn btn--ink btn--sm contact-row__resume" href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
+        <a href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
+        <span class="sep" aria-hidden="true">·</span>
         <a href={`mailto:${profile.email}`} target="_blank" rel="noopener"><Icon name="mail" />{profile.email}</a>
         <span class="sep" aria-hidden="true">·</span>
         <a href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
