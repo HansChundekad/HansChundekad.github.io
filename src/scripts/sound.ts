@@ -54,13 +54,13 @@ export class Scribble {
     }, 120);
   }
 
-  /** One pen stroke lasting `seconds`, starting now. */
-  stroke(seconds: number) {
+  /** One pen stroke lasting `seconds`, starting now; `speed` > 1 for a quicker hand. */
+  stroke(seconds: number, speed = 1) {
     const ctx = this.ctx;
     const buf = this.buffer;
     if (!this.active || !ctx || !buf || ctx.state !== 'running' || seconds < 0.02) return;
 
-    const rate = 0.9 + Math.random() * 0.2;
+    const rate = (0.9 + Math.random() * 0.2) * speed;
     const span = seconds * rate;
     if (this.cursor + span > buf.duration - 0.05) this.cursor = Math.random() * 0.4;
 

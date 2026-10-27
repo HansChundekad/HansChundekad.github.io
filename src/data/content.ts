@@ -21,10 +21,10 @@ export type Seg = string | { text: string; hl: 'sun' | 'iris' | 'mint' | 'peach'
 
 export const bullets: Seg[][] = [
   [{ text: '3x hackathon winner', hl: 'iris', href: '#awards' }, ' at UC Berkeley AI, DeveloperWeek & RoseHack'],
-  ['moved a nonprofit off paper and onto a CRM at ', { text: 'TTickle', hl: 'mint', href: '#work' }],
-  ['streamed sensor data between Raspberry Pi Picos at ', { text: 'Luxcedia', hl: 'sun', href: '#work' }],
-  ['building ', { text: 'Xpert AI', hl: 'peach', href: '#projects' }, ', a launch platform for first-time founders'],
-  ['built ', { text: 'ClineShield', hl: 'rose', href: '#project-clineshield' }, ', which stops AI coding agents from making destructive edits'],
+  ['moved a nonprofit off paper and onto a live CRM at ', { text: 'TTickle', hl: 'mint', href: '#work-ttickle' }],
+  ['wrote the embedded firmware streaming motion data at ', { text: 'Luxcedia', hl: 'sun', href: '#work-luxcedia' }],
+  ['building ', { text: 'Xpert AI', hl: 'peach', href: '#project-xpert' }, ', Duolingo for launching a business'],
+  ['built ', { text: 'ClineShield', hl: 'rose', href: '#project-clineshield' }, ', a safety guardrail on top of the Cline AI coding agent'],
 ];
 
 export const work = [
@@ -37,6 +37,8 @@ export const work = [
     when: "summer '26",
     tile: 'mint',
     logo: '/work/ttickle.webp',
+    id: 'ttickle',
+    url: 'https://ttickle.org/',
     points: [
       'Moved a grassroots organizing nonprofit off paper and whiteboards onto a shared CRM, where ~20 staff logged 330+ assessments, meeting logs, and notes in the first month.',
       'Led requirements, schema, and wireframes as 1 of 4 engineers, working directly with the client through changing requirements to the pilot handoff.',
@@ -53,6 +55,8 @@ export const work = [
     when: "spring '26",
     tile: 'sun',
     logo: '/work/luxcedia.webp',
+    id: 'luxcedia',
+    url: 'https://www.luxcedia.icu/',
     points: [
       'Sustained a 49.9 Hz accelerometer stream with 98.8% frame delivery over 13 minutes of in-motion capture, relaying 14-byte frames over TCP between two Raspberry Pi Picos.',
       'Found silently corrupted sample timing by timestamping on the sensor: a stall reported as 24.3 Hz was actually 47.6 Hz.',
@@ -67,7 +71,7 @@ export type Project = {
   name: string;
   tagline: string;
   image?: string;
-  cover?: 'xpert' | 'clineshield' | 'triage';
+  cover?: 'clineshield' | 'triage';
   status?: string;
   date: string;
   award?: string;
@@ -81,24 +85,23 @@ export const projects: Project[] = [
     id: 'xpert',
     date: "since jul '25",
     name: 'Xpert AI',
-    tagline: 'An AI business-launch platform that walks first-time founders from idea to launch. Streaming replies cut time-to-first-response from 3.8s to 1.9s.',
-    cover: 'xpert',
+    tagline: 'Walks first-time founders from idea to launch, one milestone at a time: a roadmap, an AI assistant that knows where you are, and a gallery of business documents to work through.',
+    image: '/projects/xpert.webp',
     status: 'Launching soon',
-    stack: ['SSE streaming', 'LLM chat', 'Data-layer access control'],
+    stack: ['Roadmap & milestones', 'AI assistant', 'Document gallery'],
     links: [],
   },
   {
     id: 'clineshield',
     date: "feb '26",
     name: 'ClineShield',
-    tagline: 'A safety layer for agentic coding. It blocks destructive AI edits before they apply and tells the agent why.',
+    tagline: 'A safety plugin for the Cline AI coding agent. It scores every file edit and shell command before it runs, then allows it, asks you, or blocks it with a reason Cline can act on.',
     cover: 'clineshield',
     award: 'Cline: Most Innovative Customization',
     event: 'DeveloperWeek 2026',
     stack: ['TypeScript', 'VS Code API', 'Cline hooks'],
     links: [
       { label: 'Devpost', href: 'https://devpost.com/software/clineshield' },
-      { label: 'GitHub', href: 'https://github.com/HansChundekad/ClineShield' },
     ],
   },
   {
@@ -112,7 +115,6 @@ export const projects: Project[] = [
     stack: ['Python', 'FastAPI', 'Browserbase', 'Claude'],
     links: [
       { label: 'Devpost', href: 'https://devpost.com/software/triage-y10mpq' },
-      { label: 'GitHub', href: 'https://github.com/HansChundekad/Triage' },
     ],
   },
   {
@@ -125,7 +127,6 @@ export const projects: Project[] = [
     stack: ['Next.js', 'FastAPI', 'NetworkX', 'EfficientNet'],
     links: [
       { label: 'Devpost', href: 'https://devpost.com/software/trinetra-qmyva2' },
-      { label: 'Live', href: 'https://trinetra.vercel.app' },
     ],
   },
   {
@@ -139,8 +140,6 @@ export const projects: Project[] = [
     stack: ['Next.js', 'Mapbox', 'Supabase PostGIS', 'Scrapy'],
     links: [
       { label: 'Devpost', href: 'https://devpost.com/software/taproot' },
-      { label: 'Live', href: 'https://rose-hack2026-nine.vercel.app' },
-      { label: 'GitHub', href: 'https://github.com/HansChundekad/RoseHack2026' },
     ],
   },
   {

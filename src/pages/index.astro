@@ -28,10 +28,11 @@ let hlIndex = 0;
       </nav>
       <div class="topbar__tools">
         <div class="topbar__links">
-          <a class="icon-btn" href={`mailto:${profile.email}`} aria-label="Email"><Icon name="mail" /></a>
-          <a class="icon-btn" href={profile.linkedin} aria-label="LinkedIn"><Icon name="linkedin" /></a>
-          <a class="icon-btn" href={profile.github} aria-label="GitHub"><Icon name="github" /></a>
+          <a class="icon-btn" href={`mailto:${profile.email}`} aria-label="Email" target="_blank" rel="noopener"><Icon name="mail" /></a>
+          <a class="icon-btn" href={profile.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener"><Icon name="linkedin" /></a>
+          <a class="icon-btn" href={profile.github} aria-label="GitHub" target="_blank" rel="noopener"><Icon name="github" /></a>
         </div>
+        <a class="btn btn--ink btn--sm topbar__resume" href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
         <button class="icon-btn theme-toggle topbar__theme" type="button" aria-label="Toggle dark mode" data-theme-toggle>
           <Icon name="sun" class="i-sun" /><Icon name="moon" class="i-moon" />
         </button>
@@ -52,7 +53,7 @@ let hlIndex = 0;
             <div class="vara-layer" id="vara-name" aria-hidden="true"></div>
           </div>
           <p class="hero__degree" data-rise>
-            {profile.degree} @ <a class="dot-link" href={profile.schoolUrl}>{profile.school}</a>
+            {profile.degree} @ <a class="dot-link" href={profile.schoolUrl} target="_blank" rel="noopener">{profile.school}</a>
             <span class="muted"> · {profile.gradYear}</span>
           </p>
         </div>
@@ -85,13 +86,12 @@ let hlIndex = 0;
       <p class="hero__seeking" data-rise>{profile.seeking}</p>
 
       <p class="contact-row" data-rise>
-        <a href={`mailto:${profile.email}`}><Icon name="mail" />{profile.email}</a>
+        <a class="btn btn--ink btn--sm contact-row__resume" href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
+        <a href={`mailto:${profile.email}`} target="_blank" rel="noopener"><Icon name="mail" />{profile.email}</a>
         <span class="sep" aria-hidden="true">·</span>
-        <a href={profile.linkedin}><Icon name="linkedin" />LinkedIn</a>
+        <a href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
         <span class="sep" aria-hidden="true">·</span>
-        <a href={profile.github}><Icon name="github" />GitHub</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <a href={profile.resume}><Icon name="file" />Resume</a>
+        <a href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
       </p>
 
       <nav class="bignav" id="bignav" aria-label="Sections" data-rise>
@@ -107,20 +107,16 @@ let hlIndex = 0;
       <div class="section__body grid">
         {
           work.map((job, i) => (
-            <article class="card job" data-reveal="card">
-              <div class={`card__media${job.logo ? '' : ` tile tile--${job.tile}`}`}>
-                {job.logo ? (
-                  <img src={job.logo} alt={`${job.company} logo`} loading="lazy" width="1600" height="1000" />
-                ) : (
-                  <span class="tile__name" aria-hidden="true">{job.company}</span>
-                )}
-              </div>
+            <article class="card job" id={`work-${job.id}`} data-reveal="card">
+              <a class="card__media" href={job.url} target="_blank" rel="noopener" aria-label={`${job.company} website`}>
+                <img src={job.logo} alt="" loading="lazy" width="1600" height="1000" />
+              </a>
               <div class="card__head">
                 <h3 class="card__name">
-                  <span class="penned">
+                  <a class="penned card__title-link" href={job.url} target="_blank" rel="noopener">
                     {job.role}
                     <Pen kind="under" variant={i % 3 as 0 | 1 | 2} />
-                  </span>
+                  </a>
                 </h3>
                 <span class="when" title={job.dates}>
                   {job.when}
@@ -130,6 +126,12 @@ let hlIndex = 0;
               <p class="card__event">
                 {job.company} · {job.program} · {job.place}
               </p>
+              <div class="card__links">
+                <a href={job.url} target="_blank" rel="noopener">
+                  Website
+                  <Icon name="arrow" />
+                </a>
+              </div>
             </article>
           ))
         }
@@ -141,45 +143,64 @@ let hlIndex = 0;
       <div class="section__body grid">
         {
           projects.map((p, i) => (
-            <article class="card" id={`project-${p.id}`} data-reveal="card">
+            <article class={`card${p.links[0] ? ' card--link' : ''}`} id={`project-${p.id}`} data-reveal="card">
+              {p.links[0] && <a class="card__overlay" href={p.links[0].href} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true" />}
               <div class="card__media">
                 {p.image && <img src={p.image} alt={`Screenshot of ${p.name}`} loading="lazy" width="1600" height="1000" />}
-                {p.cover === 'xpert' && (
-                  <div class="cover cover--xpert" aria-hidden="true">
-                    <span class="cover__label">illustration</span>
-                    <div class="cv-window">
-                      <div class="cv-steps">
-                        <span class="on">1 Idea</span>
-                        <span class="on">2 Market</span>
-                        <span class="on">3 Plan</span>
-                        <span class="locked">4 Launch</span>
-                      </div>
-                      <div class="cv-msg cv-msg--ai">
-                        The assistant only sees the plan steps you have reached, enforced in the data layer, and streams its reply as it writes
-                        <span class="cv-caret" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {p.cover === 'clineshield' && (
+                                {p.cover === 'clineshield' && (
                   <div class="cover cover--clineshield" aria-hidden="true">
                     <span class="cover__label">illustration</span>
-                    <div class="cv-diff">
-                      <div class="cv-diff__bar">
-                        <span>agent patch</span>
-                        <span>−4 functions</span>
-                      </div>
-                      <div class="cv-code">
-                        <span class="ctx"> export class Billing {"{"}</span>
-                        <span class="del">-  charge(user, amount) {"{"} … {"}"}</span>
-                        <span class="del">-  refund(id) {"{"} … {"}"}</span>
-                        <span class="del">-  invoice(month) {"{"} … {"}"}</span>
-                        <span class="del">-  retryFailed() {"{"} … {"}"}</span>
-                        <span class="ctx"> {"}"}</span>
-                      </div>
-                      <div class="cv-diff__verdict">
-                        <Icon name="shield-x" />
-                        Edit blocked: more than 3 functions deleted
+                    <div class="cs" data-cs>
+                      <div class="cs__stage" data-cs-stage>
+                        <div class="cs__title">
+                          <i /><i /><i />
+                          <span>billing-service · Visual Studio Code</span>
+                        </div>
+                        <div class="cs__body">
+                          <div class="cs__activity">
+                            <b /><b /><b class="on" /><b />
+                          </div>
+                          <aside class="cs__side">
+                            <p class="cs__h">ClineShield</p>
+                            <dl class="cs__stats">
+                              <div><dt>Edits blocked</dt><dd data-cs-blocked>2</dd></div>
+                              <div><dt>Edits allowed</dt><dd>41</dd></div>
+                              <div><dt>Needs approval</dt><dd>5</dd></div>
+                              <div class="cs__risk">
+                                <dt>Risk score</dt>
+                                <dd><span data-cs-risk>38</span></dd>
+                                <span class="cs__bar"><s data-cs-riskbar /></span>
+                              </div>
+                            </dl>
+                            <p class="cs__h cs__h--sm">Files touched</p>
+                            <div class="cs__heat"><i style="--h:0.15"></i><i style="--h:0.3"></i><i style="--h:0.05"></i><i style="--h:0.6"></i><i style="--h:0.2"></i><i style="--h:0.1"></i><i style="--h:0.45"></i><i style="--h:0.25"></i><i style="--h:0.8" data-cs-hot></i><i style="--h:0.1"></i><i style="--h:0.35"></i><i style="--h:0.05"></i><i style="--h:0.2"></i><i style="--h:0.55"></i><i style="--h:0.15"></i><i style="--h:0.4"></i><i style="--h:0.1"></i><i style="--h:0.25"></i><i style="--h:0.65"></i><i style="--h:0.3"></i><i style="--h:0.05"></i><i style="--h:0.2"></i><i style="--h:0.5"></i><i style="--h:0.15"></i></div>
+                            <ul class="cs__files">
+                              <li><s class="hot" />billing.ts</li>
+                              <li><s style="--h:0.55" />invoice.ts</li>
+                              <li><s style="--h:0.3" />auth.ts</li>
+                            </ul>
+                          </aside>
+                          <div class="cs__main">
+                            <div class="cs__tabs"><span class="on">billing.ts</span><span>invoice.ts</span></div>
+                            <div class="cs__code">
+                              <p><u>12</u>export class Billing {"{"}</p>
+                              <p data-cs-del><u>13</u>  charge(user, amount) {"{"} … {"}"}</p>
+                              <p data-cs-del><u>14</u>  refund(id) {"{"} … {"}"}</p>
+                              <p data-cs-del><u>15</u>  invoice(month) {"{"} … {"}"}</p>
+                              <p data-cs-del><u>16</u>  retryFailed() {"{"} … {"}"}</p>
+                              <p><u>17</u>{"}"}</p>
+                            </div>
+                            <div class="cs__term" data-cs-term>
+                              <p class="cs__termbar">Cline</p>
+                              <p data-cs-line>› Cleaning up billing: removing unused helpers</p>
+                              <p data-cs-line class="dim">apply_patch src/billing.ts · −4 functions · 82% rewritten</p>
+                              <div class="cs__shield" data-cs-shield>
+                                <b>ClineShield</b> destructive change
+                                <span>Deletes 4 functions (limit 3). Edit blocked; retry with smaller edits.</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -209,10 +230,17 @@ let hlIndex = 0;
               </div>
               <div class="card__head">
                 <h3 class="card__name">
-                  <span class="penned">
-                    {p.name}
-                    <Pen kind="under" variant={(i + 1) % 3 as 0 | 1 | 2} />
-                  </span>
+                  {p.links[0] ? (
+                    <a class="penned card__title-link" href={p.links[0].href} target="_blank" rel="noopener" aria-label={`${p.name} on ${p.links[0].label}`}>
+                      {p.name}
+                      <Pen kind="under" variant={(i + 1) % 3 as 0 | 1 | 2} />
+                    </a>
+                  ) : (
+                    <span class="penned">
+                      {p.name}
+                      <Pen kind="under" variant={(i + 1) % 3 as 0 | 1 | 2} />
+                    </span>
+                  )}
                 </h3>
                 <span class="when">
                   {p.date}
@@ -233,16 +261,6 @@ let hlIndex = 0;
                 </p>
               )}
               <p class="stack">{p.stack.join(' · ')}</p>
-              {p.links.length > 0 && (
-                <div class="card__links">
-                  {p.links.map((l) => (
-                    <a href={l.href}>
-                      {l.label}
-                      <Icon name="arrow" />
-                    </a>
-                  ))}
-                </div>
-              )}
             </article>
           ))
         }
@@ -268,7 +286,7 @@ let hlIndex = 0;
         }
       </div>
       <p class="awards__more">
-        Every hackathon build, including LA Hacks and IrvineHacks, is on <a class="dot-link" href={profile.devpost}>Devpost</a>.
+        Every hackathon build is on <a class="dot-link" href={profile.devpost} target="_blank" rel="noopener">Devpost</a>.
       </p>
     </section>
   </main>
@@ -280,10 +298,10 @@ let hlIndex = 0;
     </div>
     <p class="footer__lead">If you're hiring software engineering interns for 2027, I'd like to hear from you.</p>
     <div class="footer__cta">
-      <a class="btn btn--ink" href={`mailto:${profile.email}`}><Icon name="mail" />Email me</a>
-      <a class="btn" href={profile.resume}><Icon name="file" />Resume</a>
-      <a class="btn" href={profile.linkedin}><Icon name="linkedin" />LinkedIn</a>
-      <a class="btn" href={profile.github}><Icon name="github" />GitHub</a>
+      <a class="btn btn--ink" href={`mailto:${profile.email}`} target="_blank" rel="noopener"><Icon name="mail" />Email me</a>
+      <a class="btn" href={profile.resume} target="_blank" rel="noopener"><Icon name="file" />Resume</a>
+      <a class="btn" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+      <a class="btn" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
     </div>
     <div class="footer__fine">
       <span>© 2026 {profile.name}</span>

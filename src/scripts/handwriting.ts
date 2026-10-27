@@ -22,7 +22,20 @@ export function compose(selector: string, text: string, fontSize: number): Promi
     const v = new Vara(selector, FONT, [{ text, fontSize, strokeWidth: 2.1, autoAnimation: false, queued: false }], {
       textAlign: 'left',
     });
-    v.ready(() => {
+    // Vara can still be placing glyphs after ready() fires, so wait until the
+    // drawn bounds stop changing between frames before measuring.
+    const settled = (svg: SVGSVGElement, done: () => void) => {
+      let last = -1;
+      let frames = 0;
+      const tick = () => {
+        const w = svg.getBBox().width;
+        if ((w > 0 && Math.abs(w - last) < 0.01) || ++frames > 90) return done();
+        last = w;
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    v.ready(() => settled(v.svg as SVGSVGElement, () => {
       const svg = v.svg as SVGSVGElement;
       const paths = Array.from(svg.querySelectorAll<SVGPathElement>('path')).filter(
         (p) => p.getAttribute('stroke') !== 'transparent',
@@ -36,12 +49,26 @@ export function compose(selector: string, text: string, fontSize: number): Promi
       svg.style.height = 'auto';
       hide(paths);
       resolve({ svg, paths, width: box.width + pad * 2, height: box.height + pad * 2, top: box.y - pad });
-    });
+    }));
   });
 }
 
 function len(p: SVGPathElement) {
   return p.getTotalLength();
+}
+
+/** Re-read the drawn bounds and refit the viewBox (glyphs can shift after the first measure). */
+export function remeasure(script: Script) {
+  const box = script.svg.getBBox();
+  if (!box.width) return;
+  const pad = 6;
+  script.svg.setAttribute('viewBox', `${box.x - pad} ${box.y - pad} ${box.width + pad * 2} ${box.height + pad * 2}`);
+  // The width/height attributes set the aspect ratio that height:auto follows; keep them in step.
+  script.svg.setAttribute('width', String(box.width + pad * 2));
+  script.svg.setAttribute('height', String(box.height + pad * 2));
+  script.width = box.width + pad * 2;
+  script.height = box.height + pad * 2;
+  script.top = box.y - pad;
 }
 
 export function hide(paths: SVGPathElement[]) {
@@ -71,6 +98,7 @@ export function write(
   paths: SVGPathElement[],
   seconds: number,
   onStroke?: (duration: number) => void,
+  liftScale = 1,
 ): gsap.core.Timeline {
   const total = paths.reduce((s, p) => s + len(p), 0) || 1;
   const tl = gsap.timeline();
@@ -85,7 +113,7 @@ export function write(
         // Vara keeps one group per character, spaces included; skipping one means a new word.
         lift = prevChar.nextElementSibling === char ? LIFT.letter : LIFT.word;
       }
-      tl.to({}, { duration: lift });
+      tl.to({}, { duration: lift * liftScale });
     }
     prevChar = char;
     if (onStroke) tl.call(onStroke, [duration]);

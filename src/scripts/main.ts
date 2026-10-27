@@ -2,10 +2,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
-import { compose, write, erase, reveal, type Script } from './handwriting';
+import { compose, write, erase, reveal, remeasure, type Script } from './handwriting';
 import { Scribble } from './sound';
 import { startTrail } from './cursor/trail';
-import { startMagnetic } from './cursor/magnetic';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -28,16 +27,16 @@ export async function boot() {
   await document.fonts.ready;
   setupReveals();
   setupTriageLog();
+  setupClineShieldClip();
   setupSignature();
   await setupName();
 }
 
-/* ---------------- Cursor: light trail + magnetic links (pointer devices only) ---------------- */
+/* ---------------- Cursor: light trail (pointer devices only) ---------------- */
 function setupCursor() {
   const canvas = $<HTMLCanvasElement>('#trail');
   if (!matchMedia('(pointer: fine)').matches || reduced) return canvas.remove();
   startTrail(canvas);
-  startMagnetic();
 }
 
 /* ---------------- Theme ---------------- */
@@ -160,17 +159,18 @@ function setupReveals() {
   gsap.set('[data-reveal="card"] .card__media', { clipPath: 'inset(100% 0% 0% 0% round 14px)' });
   gsap.set('[data-reveal="card"] .pen path', { strokeDashoffset: 1 });
 
-  ScrollTrigger.batch('[data-reveal="award"]', {
-    start: 'top 90%',
-    once: true,
-    onEnter: (rows) => {
-      gsap.from(rows, { opacity: 0, x: -36, duration: 0.9, ease: 'expo.out', stagger: 0.1 });
-      gsap.from(
-        rows.map((r) => r.querySelector('.award__trophy')),
-        { scale: 0, rotate: -40, duration: 0.8, ease: 'back.out(2.2)', stagger: 0.1, delay: 0.15 },
+  // Awards count off one at a time: a row slides in, its trophy lands, then the next row.
+  const awardRows = $$('[data-reveal="award"]');
+  if (awardRows.length) {
+    const tl = gsap.timeline({ scrollTrigger: { trigger: '.awards', start: 'top 82%', once: true } });
+    awardRows.forEach((row, i) => {
+      tl.from(row, { opacity: 0, x: -40, duration: 0.28, ease: 'expo.out' }, i === 0 ? 0 : '-=0.1').from(
+        row.querySelector('.award__trophy'),
+        { scale: 0, rotate: -360, duration: 0.34, ease: 'back.out(1.6)' },
+        '-=0.18',
       );
-    },
-  });
+    });
+  }
 }
 
 /* ---------------- Triage cover: the agents talk it out, on a loop ---------------- */
@@ -194,6 +194,79 @@ function setupTriageLog() {
 
   ScrollTrigger.create({
     trigger: log,
+    start: 'top bottom',
+    end: 'bottom top',
+    onToggle: (self) => (self.isActive ? tl.play() : tl.pause()),
+  });
+}
+
+/* ---------------- ClineShield cover: zoom on the agent, block, pull back to the IDE ---------------- */
+function setupClineShieldClip() {
+  const root = document.querySelector<HTMLElement>('[data-cs]');
+  if (!root) return;
+  const q = <T extends Element = HTMLElement>(s: string) => Array.from(root.querySelectorAll<T>(s));
+  const stage = q('[data-cs-stage]')[0];
+  const lines = q('[data-cs-line]');
+  const shield = q('[data-cs-shield]')[0];
+  const dels = q('[data-cs-del]');
+  const blocked = q('[data-cs-blocked]')[0];
+  const risk = q('[data-cs-risk]')[0];
+  const bar = q('[data-cs-riskbar]')[0];
+  const hot = q('[data-cs-hot]')[0];
+
+  const finalState = () => {
+    gsap.set([...lines, shield], { opacity: 1, y: 0 });
+    dels.forEach((d) => d.classList.add('del'));
+    blocked.textContent = '3';
+    risk.textContent = '72';
+    gsap.set(bar, { width: '72%' });
+    gsap.set(hot, { '--h': 1 });
+  };
+  if (reduced) return finalState();
+
+  // Camera: frame the deleted lines and the Cline terminal under them (stage is 64em x 40em;
+  // the editor column spans x 20–64em, the framed band y 6–33.6em). The origin is that
+  // band's centre, and the translate moves it to the stage centre (32em, 20em).
+  const zoomIn = { scale: 1.45, x: '-10em', y: '0.2em', transformOrigin: '42em 19.8em' };
+  const counter = { blocked: 2, risk: 38 };
+
+  const tl = gsap.timeline({ repeat: -1, paused: true });
+  tl.call(() => {
+    dels.forEach((d) => d.classList.remove('del'));
+    counter.blocked = 2;
+    counter.risk = 38;
+    blocked.textContent = '2';
+    risk.textContent = '38';
+  })
+    .set(stage, zoomIn)
+    .set([...lines, shield], { opacity: 0, y: 6 })
+    .set(bar, { width: '38%' })
+    .set(hot, { '--h': 0.8 })
+    .to(lines[0], { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out' }, 0.4)
+    .to(lines[1], { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out' }, 1.3)
+    .call(() => dels.forEach((d) => d.classList.add('del')), [], 1.5)
+    .fromTo(shield, { opacity: 0, y: 8, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'back.out(1.8)' }, 2.5)
+    .to(stage, { scale: 1, x: 0, y: 0, duration: 1.3, ease: 'expo.inOut' }, 4.4)
+    .to(
+      counter,
+      {
+        blocked: 3,
+        risk: 72,
+        duration: 0.9,
+        ease: 'power2.out',
+        onUpdate: () => {
+          blocked.textContent = String(Math.round(counter.blocked));
+          risk.textContent = String(Math.round(counter.risk));
+        },
+      },
+      5.6,
+    )
+    .to(bar, { width: '72%', duration: 0.9, ease: 'power2.out' }, 5.6)
+    .to(hot, { '--h': 1, scale: 1.35, duration: 0.25, yoyo: true, repeat: 3, ease: 'power1.inOut' }, 5.7)
+    .to({}, { duration: 2.6 });
+
+  ScrollTrigger.create({
+    trigger: root,
     start: 'top bottom',
     end: 'bottom top',
     onToggle: (self) => (self.isActive ? tl.play() : tl.pause()),
@@ -228,6 +301,8 @@ async function setupName() {
 
   // Scale both scripts identically so the name reads at the h1 size and fits the column.
   const fit = () => {
+    remeasure(name);
+    if (greet) remeasure(greet);
     const avail = slot.parentElement!.clientWidth;
     const k = Math.min((fontPx * 6.4) / name.width, avail / name.width);
     const top = Math.min(name.top, greet?.top ?? Infinity);
@@ -240,6 +315,8 @@ async function setupName() {
   };
   fit();
   addEventListener('resize', fit);
+  // Belt and braces: Vara occasionally settles glyph positions late, so refit once things are idle.
+  if (!root.classList.contains('intro')) for (const ms of [300, 1200]) setTimeout(fit, ms);
 
   const sound = new Scribble();
 
@@ -264,8 +341,10 @@ function runIntro(slot: HTMLElement, greet: Script, name: Script, sound: Scribbl
     if (root.classList.contains('intro')) gsap.fromTo(hint, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out' });
   };
   sound.onUnlock = () => gsap.to(hint, { opacity: 0, duration: 0.3 });
-  // Ink time only; pen lifts between letters and words add roughly another second.
-  const greetSeconds = 1.9;
+  // A quick hand: ink and pen lifts both run at 2/3 of a natural pace (~1.9s in all),
+  // and the scribble plays a little faster to match.
+  const pace = 2 / 3;
+  const greetSeconds = 1.9 * pace;
 
   // Start the greeting large and centred in the viewport.
   const r = slot.getBoundingClientRect();
@@ -283,7 +362,7 @@ function runIntro(slot: HTMLElement, greet: Script, name: Script, sound: Scribbl
   gsap
     .timeline()
     .add(() => sound.start(), 0.3)
-    .add(write(greet.paths, greetSeconds, (d) => sound.stroke(d)), 0.35)
+    .add(write(greet.paths, greetSeconds, (d) => sound.stroke(d, 1.2), pace), 0.35)
     // Sound belongs to the greeting only; once it is written the hint has nothing left to offer.
     .add(() => {
       sound.finish();

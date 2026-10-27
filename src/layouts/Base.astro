@@ -25,6 +25,9 @@ const { title, description } = Astro.props;
     <script is:inline>
       (() => {
         const root = document.documentElement;
+        // Every load starts at the top so the whole page (intro included) plays fresh.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
         let theme = null;
         try { theme = localStorage.getItem('theme'); } catch {}
         if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;

@@ -206,8 +206,17 @@ ul {
   transition: clip-path 0.7s var(--ease-out) calc(var(--i, 0) * 140ms), transform 0.3s var(--ease-out);
   transform: rotate(-0.6deg);
 }
-a.hl:hover::before {
+a.hl:hover::before,
+a.hl:focus-visible::before {
   transform: rotate(-0.6deg) scale(1.04, 1.12);
+  filter: saturate(1.5) brightness(0.92);
+}
+/* Hover cue: these highlights are links, so they underline like one. */
+a.hl:hover,
+a.hl:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
 }
 .hl[data-hl='sun'] { --hl: var(--hl-sun); }
 .hl[data-hl='iris'] { --hl: var(--hl-iris); }
@@ -301,6 +310,7 @@ html.intro:not(.marks-on) .hl::before {
 .topbar__name,
 .topbar__nav,
 .topbar__links,
+.topbar__resume,
 .topbar__theme {
   opacity: 0;
   translate: 0 -0.5rem;
@@ -314,6 +324,7 @@ html.intro:not(.marks-on) .hl::before {
 .topbar.is-stuck .topbar__name,
 .topbar.is-stuck .topbar__nav,
 .topbar.is-stuck .topbar__links,
+.topbar.is-stuck .topbar__resume,
 .topbar.is-stuck .topbar__theme {
   opacity: 1;
   translate: 0 0;
@@ -324,6 +335,7 @@ html.intro:not(.marks-on) .hl::before {
 .topbar:not(.is-stuck) .topbar__name,
 .topbar:not(.is-stuck) .topbar__nav,
 .topbar:not(.is-stuck) .topbar__links,
+.topbar:not(.is-stuck) .topbar__resume,
 .topbar:not(.is-stuck) .topbar__theme {
   pointer-events: none;
   visibility: hidden;
@@ -563,7 +575,7 @@ html.intro .intro-hint {
 
 /* ---------- Sections ---------- */
 .section {
-  padding-top: clamp(5rem, 12vw, 8rem);
+  padding-top: clamp(4.5rem, 9vw, 6.5rem);
   scroll-margin-top: 4.5rem;
 }
 .section__title {
@@ -703,6 +715,7 @@ html.intro .intro-hint {
 }
 .card__media {
   position: relative;
+  display: block;
   aspect-ratio: 16 / 10;
   border-radius: 0.9rem;
   overflow: hidden;
@@ -730,6 +743,24 @@ html.intro .intro-hint {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
+}
+.card__title-link {
+  color: inherit;
+  text-decoration: none;
+}
+/* The whole project card opens its Devpost (the title stays the keyboard/screen-reader link). */
+.card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.card--link .card__title-link {
+  position: relative;
+  z-index: 2;
+}
+.card--link:has(.card__title-link:focus-visible) .card__media {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 .card__name {
   font-size: 1.3rem;
@@ -814,10 +845,6 @@ html.intro .intro-hint {
   padding: 7%;
   font-size: clamp(0.62rem, 1.35vw, 0.8rem);
 }
-.cover--xpert {
-  background: oklch(93% 0.05 55);
-  color: oklch(28% 0.04 50);
-}
 .cover--clineshield {
   background: oklch(22% 0.02 262);
   color: oklch(90% 0.01 262);
@@ -832,116 +859,258 @@ html.intro .intro-hint {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) .cover--clineshield { background: oklch(11% 0.012 262); }
 }
-.cv-window {
-  width: 100%;
-  max-width: 26em;
-  border-radius: 0.8em;
-  background: oklch(100% 0 0 / 0.75);
-  box-shadow: 0 1px 2px oklch(0% 0 0 / 0.08), 0 12px 30px -10px oklch(0% 0 0 / 0.25);
-  padding: 1.1em;
-  display: grid;
-  gap: 0.7em;
-  color: oklch(25% 0.02 262);
-  transition: translate 0.6s var(--ease-out);
-}
-.card:hover .cv-window {
-  translate: 0 -3px;
-}
-.cv-msg {
-  padding: 0.6em 0.85em;
-  border-radius: 0.9em;
-  line-height: 1.45;
-  max-width: 85%;
-}
-.cv-msg--user {
-  justify-self: end;
-  background: oklch(28% 0.03 50);
-  color: oklch(97% 0.01 60);
-  border-bottom-right-radius: 0.25em;
-}
-.cv-msg--ai {
-  background: oklch(95% 0.02 60);
-  border-bottom-left-radius: 0.25em;
-}
-.cv-caret {
-  display: inline-block;
-  width: 0.5em;
-  height: 1em;
-  margin-left: 0.15em;
-  vertical-align: -0.15em;
-  background: currentColor;
-  animation: blink 1s steps(2) infinite;
-}
-.cv-steps {
-  display: flex;
-  gap: 0.35em;
-  font-size: 0.85em;
-  color: oklch(45% 0.03 50);
-}
-.cv-steps span {
-  padding: 0.15em 0.55em;
-  border-radius: 999px;
-  background: oklch(95% 0.02 60);
-}
-.cv-steps .on {
-  background: oklch(28% 0.03 50);
-  color: oklch(97% 0.01 60);
-}
-.cv-steps .locked {
-  opacity: 0.5;
-}
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-.cv-diff {
-  width: 100%;
-  max-width: 28em;
-  border-radius: 0.7em;
+/* ClineShield: VS Code scene. 1em = 1/64 of the card, so the stage is 64em x 40em. */
+.cover--clineshield {
+  container-type: inline-size;
+  padding: 0;
+  place-items: stretch;
   overflow: hidden;
-  background: oklch(17% 0.015 262);
-  box-shadow: 0 0 0 1px oklch(30% 0.02 262), 0 16px 40px -14px oklch(0% 0 0 / 0.6);
+}
+.cover--clineshield .cover__label {
+  z-index: 2;
+  top: 0.55rem;
+  left: auto;
+  right: 0.9rem;
+  color: oklch(85% 0.01 262);
+}
+.cs {
+  font-size: calc(100cqw / 64);
+  width: 64em;
+  height: 40em;
+  overflow: hidden;
+}
+.cs__stage {
+  width: 64em;
+  height: 40em;
+  display: flex;
+  flex-direction: column;
+  background: oklch(19% 0.012 262);
+  color: oklch(84% 0.01 262);
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 0.92em;
-  line-height: 1.65;
+  will-change: transform;
 }
-.cv-diff__bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.45em 0.9em;
-  background: oklch(22% 0.016 262);
-  color: oklch(70% 0.01 262);
-  font-size: 0.85em;
-}
-.cv-code {
-  padding: 0.6em 0;
-  white-space: pre;
-  overflow: hidden;
-}
-.cv-diff .del {
-  display: block;
-  padding-inline: 0.9em;
-  background: oklch(35% 0.09 25 / 0.45);
-  color: oklch(85% 0.06 25);
-}
-.cv-diff .ctx {
-  display: block;
-  padding-inline: 0.9em;
-  color: oklch(70% 0.01 262);
-}
-.cv-diff__verdict {
+.cs__title {
+  flex: none;
   display: flex;
   align-items: center;
-  gap: 0.55em;
+  gap: 0.5em;
+  height: 2.4em;
+  padding: 0 1em;
+  background: oklch(23% 0.012 262);
+  font-family: var(--sans);
+  font-size: 1em;
+  color: oklch(62% 0.01 262);
+}
+.cs__title i {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 50%;
+  background: oklch(45% 0.01 262);
+}
+.cs__title span {
+  margin-inline: auto;
+}
+.cs__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.cs__activity {
+  flex: none;
+  width: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1em;
+  padding-top: 1.2em;
+  background: oklch(17% 0.012 262);
+}
+.cs__activity b {
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 0.25em;
+  background: oklch(38% 0.01 262);
+}
+.cs__activity b.on {
+  background: oklch(72% 0.15 250);
+}
+.cs__side {
+  flex: none;
+  width: 17em;
+  padding: 1.1em 1.1em 1em;
+  background: oklch(21% 0.012 262);
+  border-right: 0.08em solid oklch(28% 0.012 262);
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+}
+.cs__h {
+  font-size: 0.95em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: oklch(78% 0.01 262);
+}
+.cs__h--sm {
+  margin-top: auto;
+  font-size: 0.85em;
+}
+.cs__stats {
+  margin: 1em 0 0;
+  display: grid;
+  gap: 0.75em;
+}
+.cs__stats > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.cs__stats dt {
+  font-size: 1.05em;
+  color: oklch(64% 0.01 262);
+}
+.cs__stats dd {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: oklch(92% 0.01 262);
+  font-variant-numeric: tabular-nums;
+}
+.cs__stats [data-cs-blocked] {
+  color: oklch(72% 0.17 25);
+}
+.cs__risk {
+  flex-wrap: wrap;
+}
+.cs__bar {
+  flex-basis: 100%;
+  height: 0.5em;
+  margin-top: 0.45em;
+  border-radius: 1em;
+  background: oklch(28% 0.012 262);
+  overflow: hidden;
+}
+.cs__bar s {
+  display: block;
+  width: 38%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, oklch(78% 0.15 85), oklch(68% 0.18 30));
+}
+.cs__heat {
+  margin-top: 0.7em;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.3em;
+}
+.cs__heat i {
+  aspect-ratio: 1;
+  border-radius: 0.2em;
+  background: color-mix(in srgb, oklch(66% 0.19 28) calc(var(--h) * 100%), oklch(27% 0.012 262));
+}
+.cs__files {
+  margin: 0.7em 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.35em;
+  font-size: 0.95em;
+  color: oklch(66% 0.01 262);
+}
+.cs__files li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.cs__files s {
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 0.2em;
+  background: color-mix(in srgb, oklch(66% 0.19 28) calc(var(--h, 1) * 100%), oklch(27% 0.012 262));
+}
+.cs__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.cs__tabs {
+  display: flex;
+  height: 2.4em;
+  background: oklch(17% 0.012 262);
+  font-family: var(--sans);
+  font-size: 0.95em;
+}
+.cs__tabs span {
+  display: grid;
+  place-items: center;
+  padding: 0 1.2em;
+  color: oklch(55% 0.01 262);
+}
+.cs__tabs .on {
+  background: oklch(19% 0.012 262);
+  color: oklch(88% 0.01 262);
+  box-shadow: inset 0 0.12em 0 oklch(72% 0.15 250);
+}
+.cs__code {
+  flex: none;
+  padding: 0.9em 0 1.6em;
+  font-size: 1.15em;
+  line-height: 1.75;
+  white-space: pre;
+}
+.cs__code p {
+  padding: 0 1em;
+}
+.cs__code u {
+  display: inline-block;
+  width: 2.4em;
+  text-decoration: none;
+  color: oklch(45% 0.01 262);
+}
+.cs__code .del {
+  background: oklch(35% 0.09 25 / 0.5);
+  color: oklch(84% 0.06 25);
+}
+.cs__term {
+  flex: 1;
+  padding: 0 1.2em 1em;
+  border-top: 0.08em solid oklch(30% 0.012 262);
+  background: oklch(16% 0.012 262);
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+.cs__termbar {
+  margin: 0 -1.2em 0.6em;
+  padding: 0.5em 1.2em;
+  font-family: var(--sans);
+  font-size: 0.85em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(60% 0.01 262);
+  border-bottom: 0.08em solid oklch(26% 0.012 262);
+}
+.cs__term .dim {
+  color: oklch(62% 0.01 262);
+}
+.cs__shield {
+  margin-top: 0.7em;
   padding: 0.6em 0.9em;
-  background: oklch(28% 0.08 25);
+  border-radius: 0.4em;
+  background: oklch(30% 0.09 25);
   color: oklch(94% 0.03 25);
   font-family: var(--sans);
-  font-weight: 600;
 }
-.cv-diff__verdict svg {
-  width: 1.1em;
-  height: 1.1em;
+.cs__shield b {
+  margin-right: 0.4em;
+  color: oklch(82% 0.13 25);
+}
+.cs__shield span {
+  display: block;
+  margin-top: 0.15em;
+  font-size: 0.92em;
+  color: oklch(86% 0.04 25);
 }
 
 /* Triage: live agent log */
@@ -1069,7 +1238,7 @@ html.intro .intro-hint {
 
 /* Footer */
 .footer {
-  padding-block: clamp(7rem, 16vw, 11rem) 3rem;
+  padding-block: clamp(5.5rem, 11vw, 8rem) 3rem;
 }
 .footer__sign {
   position: relative;
@@ -1130,6 +1299,25 @@ html.js-name .footer__sign .fallback {
 }
 .btn--ink:hover {
   border-color: var(--ink);
+}
+.btn--sm {
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.88rem;
+}
+.btn--sm svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+.contact-row .contact-row__resume {
+  margin-right: 0.6rem;
+  color: var(--bg);
+}
+.contact-row .contact-row__resume:hover {
+  color: var(--bg);
+}
+.topbar__resume {
+  margin-inline: 0.35rem 0.15rem;
 }
 .footer__fine {
   margin-top: 5rem;
